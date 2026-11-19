@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="TerminalSnake/SilyEngine.TerminalSnake.csproj" />
+  <Project Path="SilyEngine.Abstractions/SilyEngine.Abstractions.csproj" />
+  <Project Path="SilyEngine.Console/SilyEngine.Terminal.csproj" />
+</Solution>
