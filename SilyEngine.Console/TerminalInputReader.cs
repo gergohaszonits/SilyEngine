@@ -1,6 +1,5 @@
-﻿using SilyEngine.Abstractions;
+using SilyEngine.Abstractions;
 using SilyEngine.Abstractions.Models.Input;
-using System;
 using System;
 using System.Collections.Generic;
 using System.Text;
