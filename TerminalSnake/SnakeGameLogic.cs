@@ -1,4 +1,4 @@
-﻿using SilyEngine.Abstractions;
+using SilyEngine.Abstractions;
 using SilyEngine.Abstractions.Models.Input;
 using SilyEngine.Abstractions.Models.Output;
 using SilyEngine.TerminalSnake;
@@ -33,6 +33,7 @@ public sealed class SnakeGameLogic : ILogicTick
 
     private Position _food;
     private Direction _direction;
+    private Direction _lastMovedDirection;
     private GameStatus _status = GameStatus.WaitingForStart;
     private int _tickCounter;
 
@@ -66,6 +67,7 @@ public sealed class SnakeGameLogic : ILogicTick
         _body.AddRange([new(startX, startY), new(startX - 1, startY), new(startX - 2, startY)]);
 
         _direction = Direction.Right;
+        _lastMovedDirection = Direction.Right;
         _tickCounter = 0;
         Score = 0;
 
@@ -99,7 +101,9 @@ public sealed class SnakeGameLogic : ILogicTick
             if (!input.IsPressed(arrow) && !input.IsPressed(letter))
                 continue;
 
-            if (direction != Opposite(_direction))
+            // az utoljara tenylegesen megtett lepeshez hasonlitunk, igy ket gyors
+            // gombnyomassal sem lehet egy lepesen belul visszafordulni sajat magunkba
+            if (direction != Opposite(_lastMovedDirection))
                 _direction = direction;
 
             return;
@@ -127,6 +131,7 @@ public sealed class SnakeGameLogic : ILogicTick
         }
 
         _body.Insert(0, nextHead);
+        _lastMovedDirection = _direction;
 
         if (isEating)
         {
