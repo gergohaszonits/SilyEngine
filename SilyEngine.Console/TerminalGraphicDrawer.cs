@@ -1,4 +1,4 @@
-﻿using SilyEngine.Abstractions;
+using SilyEngine.Abstractions;
 using SilyEngine.Abstractions.Models.Output;
 
 namespace SilyEngine.Terminal;
@@ -25,11 +25,6 @@ public sealed class TerminalGraphicDrawer : IGraphicsDrawer
 
     public ValueTask RenderDrawState(DrawState state)
     {
-        Array.Fill(_current, EmptyCell);
-
-        foreach (var element in state.Elements)
-            Compose(element);
-
         Array.Fill(_current, EmptyCell);
 
         foreach (var element in state.Elements)
