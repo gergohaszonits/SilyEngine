@@ -1,4 +1,4 @@
 # SilyEngine
-## No AI  just sily CODE :3
+## No AI  just sily simple handcrafted CODE :3
 
 ฅ^•ﻌ•^ฅ
